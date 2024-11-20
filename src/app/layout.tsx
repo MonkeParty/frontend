@@ -1,5 +1,5 @@
 import type {Metadata} from "next";
-import localFont from "next/font/local";
+import {Manrope} from 'next/font/google'
 import "./globals.css";
 
 
@@ -8,15 +8,21 @@ export const metadata: Metadata = {
   description: "Course work, frontend",
 };
 
+const manrope = Manrope({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-manrope',
+})
+
 export default function RootLayout({
                                      children,
                                    }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className='h-full w-full'>
     <body
-      className={`antialiased dark`}
+      className={`${manrope.className} antialiased dark h-full w-full`}
     >
     {children}
     </body>
